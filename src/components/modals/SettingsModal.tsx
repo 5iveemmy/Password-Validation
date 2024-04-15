@@ -9,6 +9,7 @@ import {
   Checkbox,
   VStack,
   ModalCloseButton,
+  Text,
 } from "@chakra-ui/react";
 import { Settings } from "lucide-react";
 import { SettingsData } from "../../types";
@@ -48,9 +49,12 @@ const SettingsModal = ({
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Password Settings</ModalHeader>
+          <ModalHeader pb="0">Password Settings</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            <Text fontSize="sm" color="gray.100" mb={4}>
+              Customize the password requirements according to your preferences.
+            </Text>
             <VStack alignItems="start">
               <Checkbox
                 name="uppercase"

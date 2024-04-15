@@ -43,7 +43,7 @@ const RegistrationForm = () => {
       email: Yup.string().email("Invalid email").required("Required"),
       password: Yup.string()
         .nullable()
-        .when([], (password, schema) => {
+        .when([], (_password, schema) => {
           if (settings.uppercase) {
             schema = schema.matches(
               /[A-Z]/,

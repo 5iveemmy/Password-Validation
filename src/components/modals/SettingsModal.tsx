@@ -48,7 +48,7 @@ const SettingsModal = ({
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Settings</ModalHeader>
+          <ModalHeader>Password Settings</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <VStack alignItems="start">

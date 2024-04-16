@@ -29,7 +29,7 @@ const RegistrationForm = () => {
   const [strength, setStrength] = useState("");
   const [isSettingsEmpty, setIsSettingEmpty] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const togglePassword = () => setShowPassword(!showPassword);
+
   const [settings, setSettings] = useState<SettingsData>({
     uppercase: false,
     lowercase: false,
@@ -37,6 +37,8 @@ const RegistrationForm = () => {
     specialCharacter: false,
     minLength: false,
   });
+
+  const togglePassword = () => setShowPassword(!showPassword);
 
   const validationSchema = () => {
     return Yup.object().shape({
@@ -89,6 +91,7 @@ const RegistrationForm = () => {
     const areAllFieldsFalse = Object.values(savedSettings).every(
       (value) => value === false
     );
+
     if (areAllFieldsFalse) {
       localStorage.removeItem("passwordSettings");
     }

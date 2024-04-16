@@ -46,7 +46,12 @@ const SettingsModal = ({
   return (
     <>
       <Settings size={35} onClick={onOpen} cursor="pointer" />
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isCentered
+        isOpen={isOpen}
+        onClose={onClose}
+        size={{ base: "xs", md: "md" }}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader pb="0">Password Settings</ModalHeader>
@@ -61,6 +66,7 @@ const SettingsModal = ({
                 isChecked={settings.uppercase}
                 onChange={handleCheckboxChange}
               >
+                <Text></Text>
                 At least 1 uppercase
               </Checkbox>
               <Checkbox

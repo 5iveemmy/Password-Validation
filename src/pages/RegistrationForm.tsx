@@ -122,69 +122,75 @@ const RegistrationForm = () => {
       width="100%"
       h="100vh"
     >
-      <Box pb="16">
-        <SettingsModal
-          setSettings={setSettings}
-          settings={settings}
-          isOpen={isOpen}
-          onClose={onClose}
-          onOpen={onOpen}
-        />
-      </Box>
-      <form onSubmit={handleSubmit}>
-        <VStack gap="5" w="80">
-          <FormControl textAlign="start" isInvalid={!!errors.email}>
-            <FormLabel>Email</FormLabel>
-            <Input
-              onChange={handleChange}
-              value={values.email}
-              type="email"
-              disabled={isSettingsEmpty}
-              name="email"
-            />
-            {!!errors.email && (
-              <Text as="span" fontSize="10px" pt="12px" color="red">
-                {errors.email}
-              </Text>
-            )}
-          </FormControl>
-          <FormControl textAlign="start" isInvalid={!!errors.password}>
-            <FormLabel>Password</FormLabel>
-            <InputGroup>
+      <Box border="1px solid" borderColor="gray.200" borderRadius="10px" p="6">
+        <Flex pb="10" justifyContent="right">
+          <SettingsModal
+            setSettings={setSettings}
+            settings={settings}
+            isOpen={isOpen}
+            onClose={onClose}
+            onOpen={onOpen}
+          />
+        </Flex>
+        <form onSubmit={handleSubmit}>
+          <VStack gap="5" w="80">
+            <FormControl textAlign="start" isInvalid={!!errors.email}>
+              <FormLabel>Email</FormLabel>
               <Input
                 onChange={handleChange}
-                name="password"
-                value={values.password}
+                value={values.email}
+                type="email"
+                border="1px solid"
+                borderColor="gray.200"
                 disabled={isSettingsEmpty}
-                type={showPassword ? "text" : "password"}
+                name="email"
               />
-              <InputRightElement cursor="pointer" onClick={togglePassword}>
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </InputRightElement>
-            </InputGroup>
-            {!!errors.password && (
-              <Text as="span" fontSize="10px" pt="12px" color="red">
-                {errors.password}
-              </Text>
-            )}
-            {strength && (
-              <Text mt={2} textAlign="left">
-                Password Strength: {strength}
-              </Text>
-            )}
-          </FormControl>
-          <Button
-            isDisabled={!isValid || !dirty || isSettingsEmpty}
-            _hover={{
-              opacity: (!isValid || !dirty) ?? "0.8",
-            }}
-            w="100%"
-            type="submit"
-          >
-            Check Password Strength
-          </Button>
-        </VStack>
-      </form>
+              {!!errors.email && (
+                <Text as="span" fontSize="10px" pt="12px" color="red">
+                  {errors.email}
+                </Text>
+              )}
+            </FormControl>
+            <FormControl textAlign="start" isInvalid={!!errors.password}>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  onChange={handleChange}
+                  name="password"
+                  border="1px solid"
+                  borderColor="gray.200"
+                  value={values.password}
+                  disabled={isSettingsEmpty}
+                  type={showPassword ? "text" : "password"}
+                />
+                <InputRightElement cursor="pointer" onClick={togglePassword}>
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </InputRightElement>
+              </InputGroup>
+              {!!errors.password && (
+                <Text as="span" fontSize="10px" pt="12px" color="red">
+                  {errors.password}
+                </Text>
+              )}
+              {strength && (
+                <Text mt={2} textAlign="left">
+                  Password Strength: {strength}
+                </Text>
+              )}
+            </FormControl>
+            <Button
+              isDisabled={!isValid || !dirty || isSettingsEmpty}
+              _hover={{
+                opacity: (!isValid || !dirty) ?? "0.8",
+              }}
+              w="100%"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </VStack>
+        </form>
+      </Box>
     </Flex>
   );
 };

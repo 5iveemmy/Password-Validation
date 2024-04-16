@@ -22,6 +22,12 @@ interface Props {
   setSettings: React.Dispatch<React.SetStateAction<SettingsData>>;
 }
 
+interface CheckboxValueData {
+  name: string;
+  label: string;
+  isChecked: boolean;
+}
+
 const SettingsModal = ({
   setSettings,
   settings,
@@ -43,6 +49,34 @@ const SettingsModal = ({
     window.location.reload();
   };
 
+  const checboxValues: CheckboxValueData[] = [
+    {
+      name: "uppercase",
+      label: "At least 1 uppercase",
+      isChecked: settings.uppercase,
+    },
+    {
+      name: "lowercase",
+      label: "At least 1 lowercase",
+      isChecked: settings.lowercase,
+    },
+    {
+      name: "figure",
+      label: "At least 1 figure",
+      isChecked: settings.figure,
+    },
+    {
+      name: "specialCharacter",
+      label: "At least 1 special character - !@#$%^&*()",
+      isChecked: settings.specialCharacter,
+    },
+    {
+      name: "minLength",
+      label: "At least 8 characters long",
+      isChecked: settings.minLength,
+    },
+  ];
+
   return (
     <>
       <Settings size={35} onClick={onOpen} cursor="pointer" />
@@ -54,49 +88,25 @@ const SettingsModal = ({
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader pb="0">Password Settings</ModalHeader>
+          <ModalHeader pb="0" px={{ base: "4", md: "5" }}>
+            Password Settings
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody px={{ base: "4", md: "5" }}>
             <Text fontSize="sm" color="gray.100" mb={4}>
               Customize the password requirements according to your preferences.
             </Text>
             <VStack alignItems="start">
-              <Checkbox
-                name="uppercase"
-                isChecked={settings.uppercase}
-                onChange={handleCheckboxChange}
-              >
-                <Text></Text>
-                At least 1 uppercase
-              </Checkbox>
-              <Checkbox
-                name="lowercase"
-                isChecked={settings.lowercase}
-                onChange={handleCheckboxChange}
-              >
-                At least 1 lowercase
-              </Checkbox>
-              <Checkbox
-                name="figure"
-                isChecked={settings.figure}
-                onChange={handleCheckboxChange}
-              >
-                At least 1 figure
-              </Checkbox>
-              <Checkbox
-                name="specialCharacter"
-                isChecked={settings.specialCharacter}
-                onChange={handleCheckboxChange}
-              >
-                At least 1 special character - !@#$%^&*()
-              </Checkbox>
-              <Checkbox
-                name="minLength"
-                isChecked={settings.minLength}
-                onChange={handleCheckboxChange}
-              >
-                At least 8 characters long
-              </Checkbox>
+              {checboxValues.map((value, index) => (
+                <Checkbox
+                  key={index}
+                  name={value.name}
+                  isChecked={value.isChecked}
+                  onChange={handleCheckboxChange}
+                >
+                  <Text fontSize={{ base: "sm", md: "md" }}>{value.label}</Text>
+                </Checkbox>
+              ))}
             </VStack>
           </ModalBody>
           <ModalFooter>

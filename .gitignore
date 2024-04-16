@@ -23,4 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 .yarn/install-state.gz
-.yarnrc.yml

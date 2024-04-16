@@ -79,7 +79,7 @@ const SettingsModal = ({
 
   return (
     <>
-      <Settings size={35} onClick={onOpen} cursor="pointer" />
+      <Settings size={25} onClick={onOpen} cursor="pointer" />
       <Modal
         isCentered
         isOpen={isOpen}

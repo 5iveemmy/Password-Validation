@@ -122,7 +122,13 @@ const RegistrationForm = () => {
       width="100%"
       h="100vh"
     >
-      <Box border="1px solid" borderColor="gray.200" borderRadius="10px" p="6">
+      <Box
+        border="1px solid"
+        boxShadow="0px 4px 10px rgba(0, 0, 0, 0.1)"
+        borderColor="gray.200"
+        borderRadius="10px"
+        p="6"
+      >
         <Flex pb="10" justifyContent="right">
           <SettingsModal
             setSettings={setSettings}
